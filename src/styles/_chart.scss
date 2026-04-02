@@ -1,0 +1,147 @@
+@use 'variables' as *;
+
+// ── Chart area (right column) ─────────────────────────────────────────────────
+.chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  &__canvas-wrapper {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__canvas {
+    display: block;
+  }
+
+  &__hint {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 10px;
+    color: $color-text-placeholder;
+    font-family: $font-mono;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid $color-border;
+  }
+}
+
+// ── Toolbar ───────────────────────────────────────────────────────────────────
+.toolbar {
+  height: $toolbar-height;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 10px;
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+
+  &__label {
+    font-size: 10px;
+    color: $color-text-placeholder;
+    font-family: $font-mono;
+  }
+
+  &__legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: $color-text-muted;
+    white-space: nowrap;
+  }
+
+  &__legend-swatch {
+    width: 10px;
+    height: 3px;
+    border-radius: 1px;
+    flex-shrink: 0;
+
+    &--gap {
+      background: rgba(100, 116, 139, 0.4);
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+    }
+
+    &--raw {
+      background: rgba(100, 116, 139, 0.3);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  &__btn {
+    padding: 3px 10px;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    background: $color-surface;
+    font-size: 10px;
+    color: $color-text-muted;
+    white-space: nowrap;
+    transition: all 0.15s;
+
+    &:hover { background: $color-surface-muted; }
+
+    &--disabled {
+      background: $color-surface-muted;
+      color: #cbd5e0;
+      cursor: default;
+      &:hover { background: $color-surface-muted; }
+    }
+  }
+}
+
+// ── Tooltip ───────────────────────────────────────────────────────────────────
+.tooltip {
+  position: absolute;
+  background: $color-surface;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  padding: 6px 10px;
+  pointer-events: none;
+  font-family: $font-mono;
+  font-size: 11px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  white-space: nowrap;
+
+  &__label {
+    color: $color-text-placeholder;
+    font-size: 9px;
+    margin-bottom: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__values {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  &__axis { color: $color-text-placeholder; }
+  &__val  { color: $color-text; font-weight: 500; }
+}

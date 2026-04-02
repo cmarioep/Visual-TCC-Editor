@@ -1,0 +1,42 @@
+@use 'variables' as *;
+
+.header {
+  height: $header-height;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__logo {
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-md;
+    background: linear-gradient(135deg, $color-success, $color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a2535;
+    letter-spacing: -0.01em;
+  }
+
+  &__subtitle {
+    font-size: 11px;
+    color: $color-text-placeholder;
+    font-family: $font-mono;
+  }
+}

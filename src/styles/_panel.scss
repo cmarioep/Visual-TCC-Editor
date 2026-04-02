@@ -1,0 +1,43 @@
+@use 'variables' as *;
+
+.panel {
+  width: $panel-width;
+  min-width: $panel-width;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: $color-surface;
+  border-right: 1px solid $color-border;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb { background: $color-border; border-radius: 2px; }
+
+  &__section {
+    padding: 12px 14px;
+    border-bottom: 1px solid $color-border-muted;
+
+    &--grow {
+      flex: 1 1 auto;
+    }
+  }
+
+  &__section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $color-text-placeholder;
+    margin-bottom: 8px;
+    // Reset h2 styles
+    line-height: 1;
+  }
+
+  &__section-badge {
+    color: $color-text-placeholder;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 9px;
+    margin-left: 6px;
+  }
+}

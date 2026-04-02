@@ -1,0 +1,92 @@
+@use 'variables' as *;
+
+.seg-card {
+  border-radius: $radius-lg;
+  border: 1.5px solid $color-border-card;
+  overflow: hidden;
+  margin-bottom: 7px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: $color-surface-muted;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-size: 11px;
+    font-weight: 700;
+    flex: 1;
+    color: $color-text;
+  }
+
+  &__count {
+    font-size: 10px;
+    color: $color-text-placeholder;
+    font-family: $font-mono;
+  }
+
+  &__remove {
+    color: #cbd5e0;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 2px;
+    transition: color 0.15s;
+
+    &:hover { color: $color-danger; }
+  }
+
+  &__body {
+    padding: 8px 10px;
+    border-top: 1px solid $color-border-muted;
+  }
+
+  &__range {
+    font-size: 10px;
+    color: $color-text-placeholder;
+    font-family: $font-mono;
+    margin-bottom: 6px;
+  }
+
+  &__lambda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__lambda-label {
+    font-size: 10px;
+    color: $color-text-muted;
+    min-width: 14px;
+  }
+
+  &__lambda-slider {
+    flex: 1;
+  }
+
+  &__lambda-value {
+    font-size: 10px;
+    font-family: $font-mono;
+    color: $color-text;
+    font-weight: 500;
+    min-width: 34px;
+    text-align: right;
+  }
+
+  &__lambda-hints {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: $color-text-placeholder;
+    font-family: $font-mono;
+    margin-top: 3px;
+  }
+}
