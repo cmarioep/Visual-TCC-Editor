@@ -67,6 +67,18 @@ export default function App() {
   // Parse on mount with sample data
   useEffect(() => { handleParse(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Direct point injection (Table mode) ──────────────────────────────────────
+  const handleApplyPoints = useCallback((pts) => {
+    const sorted = [...pts]
+      .sort((a, b) => a.x - b.x)
+      .map((p, i) => ({ ...p, _id: i }));
+    setRawPts(sorted);
+    setSelections([]);
+    setParseError(null);
+    viewport.reset();
+    history.push({ selections: [], rawPts: sorted });
+  }, [viewport, history]);
+
   // ── Selection management ──────────────────────────────────────────────────────
   const handleUpdateLambda = useCallback((id, lambda) => {
     setSelections(prev => prev.map(s => s.id === id ? { ...s, lambda } : s));
@@ -119,6 +131,7 @@ export default function App() {
           parseError={parseError}
           onInputChange={setInputText}
           onParse={handleParse}
+          onApplyPoints={handleApplyPoints}
           // stats
           nRaw={nRaw}
           nOut={nOut}
