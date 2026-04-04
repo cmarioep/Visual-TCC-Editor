@@ -31,6 +31,12 @@
     margin-bottom: 8px;
     // Reset h2 styles
     line-height: 1;
+
+    &--row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   &__section-badge {

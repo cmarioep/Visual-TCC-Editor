@@ -12,7 +12,17 @@ export function InputSection({ inputText, onChange, onParse, parseError, rawPts,
 
   return (
     <section className="panel__section">
-      <h2 className="panel__section-title">Input data</h2>
+      <h2 className="panel__section-title panel__section-title--row">
+        Input data
+        {mode === 'text' && (
+          <span className="input-block__info">
+            ⓘ
+            <span className="input-block__tooltip">
+              Separators: tab, comma, semicolon or space. Column headers are optional.
+            </span>
+          </span>
+        )}
+      </h2>
       <div className="input-block__tabs">
         <button
           className={`input-block__tab${mode === 'text' ? ' input-block__tab--active' : ''}`}
@@ -27,13 +37,15 @@ export function InputSection({ inputText, onChange, onParse, parseError, rawPts,
       <div className="input-block__mode">
         {mode === 'text' ? (
           <>
-            <textarea
-              className={`input-block__textarea${parseError ? ' input-block__textarea--error' : ''}`}
-              value={inputText}
-              onChange={e => onChange(e.target.value)}
-              placeholder={'X\tY\n12\t1000\n11\t966\n10\t600\n\n(pega desde Excel, headers opcionales)'}
-              spellCheck={false}
-            />
+            <div className={`input-block__textarea-wrap${parseError ? ' input-block__textarea-wrap--error' : ''}`}>
+              <textarea
+                className="input-block__textarea"
+                value={inputText}
+                onChange={e => onChange(e.target.value)}
+                placeholder={'X\tY\n12\t1000\n11\t966\n10\t600\n\n(pega desde Excel, headers opcionales)'}
+                spellCheck={false}
+              />
+            </div>
             {parseError && <p className="input-block__error">{parseError}</p>}
             <button className="input-block__submit" onClick={onParse}>
               Parse &amp; Process
