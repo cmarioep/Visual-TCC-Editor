@@ -10,6 +10,11 @@ export function InputSection({ inputText, onChange, onParse, parseError, rawPts,
     setMode('table');
   };
 
+  const handleClear = () => {
+    setTableKey(k => k + 1);
+    onClear();
+  };
+
   return (
     <section className="panel__section">
       <h2 className="panel__section-title panel__section-title--row">
@@ -27,9 +32,9 @@ export function InputSection({ inputText, onChange, onParse, parseError, rawPts,
         <span className="input-block__title-actions">
           <button
             className="input-block__clear"
-            onClick={onClear}
+            onClick={handleClear}
             title="Clear all data"
-            disabled={!inputText && !rawPts?.length}
+            disabled={mode === 'text' ? !inputText : false}
           >
             Clear
           </button>

@@ -30,10 +30,16 @@ export function PointsTable({ initialPts, onApply }) {
   const updateRow = (i, field, val) =>
     setRows(r => r.map((row, idx) => idx === i ? { ...row, [field]: val } : row));
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e, rowIndex) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      addRow();
+      const isLastRow = rowIndex === rows.length - 1;
+      if (isLastRow) {
+        addRow();
+      } else {
+        const inputs = bodyRef.current.querySelectorAll('.points-table__cell');
+        inputs[(rowIndex + 1) * 2]?.focus();
+      }
     }
   };
 
@@ -73,7 +79,7 @@ export function PointsTable({ initialPts, onApply }) {
               value={row.x}
               placeholder="x"
               onChange={e => updateRow(i, 'x', e.target.value)}
-              onKeyDown={handleKeyDown}
+              onKeyDown={e => handleKeyDown(e, i)}
             />
             <input
               className="points-table__cell"
@@ -81,7 +87,7 @@ export function PointsTable({ initialPts, onApply }) {
               value={row.y}
               placeholder="y"
               onChange={e => updateRow(i, 'y', e.target.value)}
-              onKeyDown={handleKeyDown}
+              onKeyDown={e => handleKeyDown(e, i)}
             />
             <button
               className="points-table__remove"
