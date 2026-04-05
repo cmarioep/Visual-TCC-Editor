@@ -22,9 +22,9 @@ Single-page React + Vite app. No TypeScript, no external chart library — all r
 ```
 src/
 ├── lib/                    # Funciones puras, sin React
-│   ├── constants.js        # Colores, datos SAMPLE
+│   ├── constants.js        # Colores, datos SAMPLE (formato TSV)
 │   ├── spline.js           # Algoritmo de spline cúbico natural
-│   ├── parser.js           # parseInput — JSON / CSV
+│   ├── parser.js           # parseInput — TSV / CSV (tab, coma, punto y coma, espacio)
 │   ├── coords.js           # toLogLog / toLinear
 │   ├── buildOutput.js      # Pipeline de suavizado por segmento
 │   └── renderer.js         # renderToCanvas + fmtN
@@ -36,27 +36,33 @@ src/
 ├── components/
 │   ├── Header/Header.jsx
 │   ├── Panel/              # Panel lateral (5 secciones)
+│   │   ├── Panel.jsx
+│   │   ├── InputSection.jsx   # Toggle Text/Table + Clear
+│   │   ├── PointsTable.jsx    # Tabla editable de coordenadas
+│   │   ├── StatsSection.jsx
+│   │   ├── SelectionsSection.jsx
+│   │   ├── SegmentCard.jsx
+│   │   └── ExportSection.jsx
 │   └── Chart/              # Chart + Toolbar + Tooltip
 ├── styles/                 # SASS + BEM
 │   ├── _variables.scss     # Tokens de diseño
 │   ├── _reset.scss
 │   ├── _header.scss        # .header
-│   ├── _panel.scss         # .panel
-│   ├── _sections.scss      # .input-block .stats .selections .export
+│   ├── _panel.scss         # .panel (sin overflow-y; scroll solo en --grow)
+│   ├── _sections.scss      # .input-block .points-table .stats .selections .export
 │   ├── _seg-card.scss      # .seg-card
 │   ├── _chart.scss         # .chart .toolbar .tooltip
 │   └── main.scss           # Entry point de estilos
 └── App.jsx                 # Orquestador delgado (sin lógica de renderizado)
-
 ```
 
 ### `src/lib/` — pure math and rendering
 
 | File | Responsibility |
 |---|---|
-| `constants.js` | `SEG_COLORS`, `SEG_FILLS`, `SEG_BORDERS`, `SAMPLE` data |
+| `constants.js` | `SEG_COLORS`, `SEG_FILLS`, `SEG_BORDERS`, `SAMPLE` data (TSV con headers) |
 | `spline.js` | `smoothingSpline(pts, lambda)` — natural cubic spline via Thomas algorithm, works in log-log space |
-| `parser.js` | `parseInput(text)` — accepts JSON `[{x,y}]`, wrapped objects, or CSV |
+| `parser.js` | `parseInput(text)` — two-column numeric text; separators: tab, comma, semicolon, space; headers skipped automatically |
 | `coords.js` | `toLogLog(pts)` / `toLinear(pts)` — log10 ↔ linear conversion |
 | `buildOutput.js` | `buildOutput(rawPts, selections)` → `{ segRaw, smoothedSegs, gapPts, outputPts }` |
 | `renderer.js` | `renderToCanvas(...)` — Canvas 2D renderer; also exports `fmtN()` for tick/label formatting |
@@ -73,11 +79,21 @@ src/
 ### Data flow
 
 ```
-inputText → parseInput → rawPts
+inputText → parseInput → rawPts          (Text mode)
+tablePts  → handleApplyPoints → rawPts   (Table mode)
 rawPts + selections → buildOutput → output (memoized in App.jsx)
 rawPts + selections + output → renderToCanvas → canvas pixels
                                               → stateRef.current (coordinate transforms for hit-testing)
 ```
+
+### Input modes (InputSection)
+
+`InputSection` has two modes toggled by a Text/Table tab control:
+
+- **Text mode**: textarea accepting TSV/CSV pasted directly from Excel. Headers are optional — any row that doesn't produce two valid numbers is skipped. A `ⓘ` tooltip next to the title shows separator info.
+- **Table mode**: `PointsTable` — editable rows with X/Y inputs. Enter moves focus to the next row; Enter on the last row adds a new one. Apply validates all rows and injects points directly into `rawPts` via `handleApplyPoints` in `App.jsx`.
+- **Clear button**: in the title row, disabled when there is no data. Resets `inputText`, `rawPts`, `selections`, and re-mounts `PointsTable` via `tableKey`.
+- Both modes share a fixed `height: 215px` container (`input-block__mode`) so switching tabs causes no layout shift.
 
 ### Key interaction design
 
@@ -96,6 +112,10 @@ Variables are in `_variables.scss` (imported via `@use 'variables' as *`). BEM b
 | `.app`, `.app__body` | `main.scss` |
 | `.header` | `_header.scss` |
 | `.panel`, `.panel__section` | `_panel.scss` |
-| `.input-block`, `.stats`, `.selections`, `.export` | `_sections.scss` |
+| `.input-block`, `.points-table`, `.stats`, `.selections`, `.export` | `_sections.scss` |
 | `.seg-card` | `_seg-card.scss` |
 | `.chart`, `.toolbar`, `.tooltip` | `_chart.scss` |
+
+### Panel layout note
+
+`.panel` uses `overflow: hidden` (not `overflow-y: auto`) so it always fills the full height of `app__body`. Only `.panel__section--grow` (Selections) has `overflow-y: auto` to scroll its own content independently.
