@@ -5,7 +5,7 @@ import { ExportSection } from './ExportSection';
 
 export function Panel({
   // input
-  inputText, parseError, onInputChange, onParse, onApplyPoints,
+  inputText, parseError, onInputChange, onParse, onApplyPoints, onClear,
   // stats
   nRaw, nOut, nGap,
   // selections
@@ -22,6 +22,7 @@ export function Panel({
         onParse={onParse}
         rawPts={rawPts}
         onApplyPoints={onApplyPoints}
+        onClear={onClear}
       />
       <StatsSection nRaw={nRaw} nOut={nOut} nGap={nGap} />
       <SelectionsSection

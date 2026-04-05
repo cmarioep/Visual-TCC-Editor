@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PointsTable } from './PointsTable';
 
-export function InputSection({ inputText, onChange, onParse, parseError, rawPts, onApplyPoints }) {
+export function InputSection({ inputText, onChange, onParse, parseError, rawPts, onApplyPoints, onClear }) {
   const [mode, setMode] = useState('text');
   const [tableKey, setTableKey] = useState(0);
 
@@ -13,15 +13,27 @@ export function InputSection({ inputText, onChange, onParse, parseError, rawPts,
   return (
     <section className="panel__section">
       <h2 className="panel__section-title panel__section-title--row">
-        Input data
-        {mode === 'text' && (
-          <span className="input-block__info">
-            ⓘ
-            <span className="input-block__tooltip">
-              Separators: tab, comma, semicolon or space. Column headers are optional.
+        <span className="input-block__title-label">
+          Input data
+          {mode === 'text' && (
+            <span className="input-block__info">
+              ⓘ
+              <span className="input-block__tooltip">
+                Separators: tab, comma, semicolon or space. Column headers are optional.
+              </span>
             </span>
-          </span>
-        )}
+          )}
+        </span>
+        <span className="input-block__title-actions">
+          <button
+            className="input-block__clear"
+            onClick={onClear}
+            title="Clear all data"
+            disabled={!inputText && !rawPts?.length}
+          >
+            Clear
+          </button>
+        </span>
       </h2>
       <div className="input-block__tabs">
         <button

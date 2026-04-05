@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 
 export function PointsTable({ initialPts, onApply }) {
+  const EMPTY_ROWS = 5;
   const [rows, setRows] = useState(() =>
     initialPts?.length
       ? initialPts.map(p => ({ x: String(p.x), y: String(p.y) }))
-      : [{ x: '', y: '' }]
+      : Array.from({ length: EMPTY_ROWS }, () => ({ x: '', y: '' }))
   );
   const [error, setError] = useState(null);
   const [shouldFocusLast, setShouldFocusLast] = useState(false);
