@@ -10,6 +10,31 @@
   background: $color-surface;
   border-bottom: 1px solid $color-border;
 
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: $font-mono;
+    color: $color-text-muted;
+    padding: 4px 8px;
+    border-radius: $radius-sm;
+    margin-right: 6px;
+    transition: color 0.12s, background 0.12s;
+
+    &:hover {
+      color: $color-text;
+      background: $color-bg;
+    }
+  }
+
   &__brand {
     display: flex;
     align-items: center;

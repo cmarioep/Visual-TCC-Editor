@@ -1,0 +1,145 @@
+@use 'variables' as *;
+
+// ── Home layout ───────────────────────────────────────────────────────────────
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: $color-bg;
+  gap: 52px;
+}
+
+// ── Brand ─────────────────────────────────────────────────────────────────────
+.home__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.home__wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.home__name {
+  font-family: $font-mono;
+  font-size: 30px;
+  font-weight: 500;
+  color: $color-text;
+  letter-spacing: -0.03em;
+}
+
+.home__tagline {
+  font-size: 12px;
+  color: $color-text-placeholder;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+// ── Module cards ──────────────────────────────────────────────────────────────
+.home__modules {
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.module-card {
+  width: 216px;
+  background: $color-surface;
+  border: 1px solid $color-border-card;
+  border-top: 3px solid var(--module-color);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+
+  &--available {
+    cursor: pointer;
+    transition: box-shadow 0.15s, transform 0.1s;
+
+    &:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 2px var(--module-color);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.48;
+  }
+
+  // ── Curve preview area
+  &__curve {
+    height: 108px;
+    background: $color-surface-muted;
+    border-bottom: 1px solid $color-border-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+
+  // ── Text info
+  &__info {
+    padding: 12px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-text;
+    letter-spacing: -0.01em;
+  }
+
+  &__desc {
+    font-size: 11px;
+    color: $color-text-muted;
+    font-family: $font-mono;
+    line-height: 1.5;
+  }
+
+  // ── Footer action / badge
+  &__footer {
+    padding: 10px 14px 12px;
+    border-top: 1px solid $color-border-muted;
+  }
+
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--module-color);
+    user-select: none;
+  }
+
+  &__badge {
+    font-size: 10px;
+    font-weight: 500;
+    font-family: $font-mono;
+    color: $color-text-placeholder;
+    letter-spacing: 0.06em;
+  }
+}
+
+// ── Version ───────────────────────────────────────────────────────────────────
+.home__version {
+  font-size: 11px;
+  font-family: $font-mono;
+  color: $color-text-placeholder;
+}

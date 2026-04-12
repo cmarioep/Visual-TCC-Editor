@@ -13,7 +13,7 @@ import { Header } from './components/Header/Header';
 import { Panel } from './components/Panel/Panel';
 import { Chart } from './components/Chart/Chart';
 
-export default function App() {
+export default function App({ onHome }) {
   const [inputText, setInputText]     = useState(SAMPLE);
   const [parseError, setParseError]   = useState(null);
   const [rawPts, setRawPts]           = useState(null);
@@ -133,7 +133,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header onHome={onHome} />
       <div className="app__body">
         <Panel
           // input
