@@ -26,7 +26,7 @@
     color: $color-text-placeholder;
     font-family: $font-mono;
     pointer-events: none;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(15, 23, 42, 0.85);
     padding: 3px 8px;
     border-radius: 4px;
     border: 1px solid $color-border;
@@ -106,7 +106,7 @@
 
     &--disabled {
       background: $color-surface-muted;
-      color: #cbd5e0;
+      color: $color-text-placeholder;
       cursor: default;
       &:hover { background: $color-surface-muted; }
     }

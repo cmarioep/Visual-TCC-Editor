@@ -2,25 +2,25 @@
 $font-sans:  'DM Sans', system-ui, sans-serif;
 $font-mono:  'DM Mono', monospace;
 
-// ── Colours ───────────────────────────────────────────────────────────────────
-$color-primary:        #1d6fce;
+// ── Colours (dark theme) ──────────────────────────────────────────────────────
+$color-primary:        #1a6bbd;
 $color-primary-hover:  #1558a8;
-$color-primary-light:  #eff6ff;
-$color-success:        #0ea760;
-$color-success-light:  #f0fdf4;
+$color-primary-light:  rgba(26, 107, 189, 0.15);
+$color-success:        #1d9e75;
+$color-success-light:  rgba(29, 158, 117, 0.12);
 $color-danger:         #ef4444;
 
-$color-bg:             #f1f5f9;
-$color-surface:        #fff;
-$color-surface-muted:  #f8fafc;
-$color-border:         #e2e8f0;
-$color-border-muted:   #f1f5f9;
-$color-border-card:    #e8edf3;
+$color-bg:             #0f172a;
+$color-surface:        #1e293b;
+$color-surface-muted:  #162032;
+$color-border:         #334155;
+$color-border-muted:   #1e293b;
+$color-border-card:    #2d3f55;
 
-$color-text:           #1e293b;
-$color-text-secondary: #4a5568;
+$color-text:           #f1f5f9;
+$color-text-secondary: #94a3b8;
 $color-text-muted:     #64748b;
-$color-text-placeholder: #94a3b8;
+$color-text-placeholder: #475569;
 
 // ── Radius ────────────────────────────────────────────────────────────────────
 $radius-sm: 5px;
@@ -28,6 +28,21 @@ $radius-md: 7px;
 $radius-lg: 8px;
 
 // ── Layout ────────────────────────────────────────────────────────────────────
-$panel-width:     272px;
-$header-height:   46px;
-$toolbar-height:  36px;
+$panel-width:    272px;
+$toolbar-height: 36px;
+
+// ── CSS custom properties (shared with MCB module) ───────────────────────────
+:root {
+  --bg:         #{$color-bg};
+  --bg2:        #{$color-surface};
+  --bg3:        #{$color-surface-muted};
+  --border:     #{$color-border};
+  --text:       #{$color-text};
+  --text2:      #{$color-text-secondary};
+  --text3:      #{$color-text-muted};
+  --blue:       #{$color-primary};
+  --blue-faint: rgba(26, 107, 189, 0.15);
+  --green:      #{$color-success};
+  --radius:     #{$radius-md};
+  --radius-lg:  #{$radius-lg};
+}

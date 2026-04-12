@@ -9,7 +9,7 @@ import { useViewport } from './hooks/useViewport';
 import { useExport } from './hooks/useExport';
 import { useCanvasInteraction } from './hooks/useCanvasInteraction';
 
-import { Header } from './components/Header/Header';
+import { BackButton } from './components/BackButton';
 import { Panel } from './components/Panel/Panel';
 import { Chart } from './components/Chart/Chart';
 
@@ -133,7 +133,7 @@ export default function App({ onHome }) {
 
   return (
     <div className="app">
-      <Header onHome={onHome} />
+      {onHome && <BackButton onClick={onHome} />}
       <div className="app__body">
         <Panel
           // input

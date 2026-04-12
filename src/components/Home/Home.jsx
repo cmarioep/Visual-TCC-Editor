@@ -10,8 +10,8 @@ const MODULES = [
     id: 'mcb',
     name: 'MCB IEC 60898-1',
     desc: 'Class B / C / D trip bands',
-    color: '#0ea760',
-    available: false,
+    color: '#1d9e75',
+    available: true,
   },
   {
     id: 'mccb',
@@ -27,17 +27,17 @@ function CardGrid() {
   return (
     <>
       {/* Decade lines */}
-      <line x1="80"  y1="0"  x2="80"  y2="88" stroke="#e2e8f0" strokeWidth="0.7" />
-      <line x1="0"   y1="44" x2="160" y2="44" stroke="#e2e8f0" strokeWidth="0.7" />
+      <line x1="80"  y1="0"  x2="80"  y2="88" stroke="#253447" strokeWidth="0.7" />
+      <line x1="0"   y1="44" x2="160" y2="44" stroke="#253447" strokeWidth="0.7" />
       {/* Subdivision lines */}
-      <line x1="24"  y1="0"  x2="24"  y2="88" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="56"  y1="0"  x2="56"  y2="88" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="104" y1="0"  x2="104" y2="88" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="136" y1="0"  x2="136" y2="88" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="0"   y1="13" x2="160" y2="13" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="0"   y1="31" x2="160" y2="31" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="0"   y1="57" x2="160" y2="57" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="0"   y1="75" x2="160" y2="75" stroke="#e2e8f0" strokeWidth="0.4" />
+      <line x1="24"  y1="0"  x2="24"  y2="88" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="56"  y1="0"  x2="56"  y2="88" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="104" y1="0"  x2="104" y2="88" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="136" y1="0"  x2="136" y2="88" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="0"   y1="13" x2="160" y2="13" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="0"   y1="31" x2="160" y2="31" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="0"   y1="57" x2="160" y2="57" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="0"   y1="75" x2="160" y2="75" stroke="#1e293b" strokeWidth="0.4" />
     </>
   );
 }
@@ -47,16 +47,16 @@ function TCCSymbol() {
   return (
     <svg width="52" height="52" viewBox="0 0 64 64" fill="none" aria-hidden="true">
       {/* Axes */}
-      <line x1="7" y1="4"  x2="7"  y2="60" stroke="#cbd5e1" strokeWidth="1" />
-      <line x1="7" y1="60" x2="62" y2="60" stroke="#cbd5e1" strokeWidth="1" />
+      <line x1="7" y1="4"  x2="7"  y2="60" stroke="#334155" strokeWidth="1" />
+      <line x1="7" y1="60" x2="62" y2="60" stroke="#334155" strokeWidth="1" />
       {/* Decade grid */}
-      <line x1="7"  y1="32" x2="62" y2="32" stroke="#e2e8f0" strokeWidth="0.6" />
-      <line x1="35" y1="4"  x2="35" y2="60" stroke="#e2e8f0" strokeWidth="0.6" />
+      <line x1="7"  y1="32" x2="62" y2="32" stroke="#253447" strokeWidth="0.6" />
+      <line x1="35" y1="4"  x2="35" y2="60" stroke="#253447" strokeWidth="0.6" />
       {/* Subdivision grid */}
-      <line x1="7"  y1="19" x2="62" y2="19" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="7"  y1="46" x2="62" y2="46" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="20" y1="4"  x2="20" y2="60" stroke="#e2e8f0" strokeWidth="0.4" />
-      <line x1="49" y1="4"  x2="49" y2="60" stroke="#e2e8f0" strokeWidth="0.4" />
+      <line x1="7"  y1="19" x2="62" y2="19" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="7"  y1="46" x2="62" y2="46" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="20" y1="4"  x2="20" y2="60" stroke="#1e293b" strokeWidth="0.4" />
+      <line x1="49" y1="4"  x2="49" y2="60" stroke="#1e293b" strokeWidth="0.4" />
       {/* Inverse-time TCC curve */}
       <path
         d="M 7 5 C 10 14, 22 42, 30 52 C 38 59, 52 60, 62 60"

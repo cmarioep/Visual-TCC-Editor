@@ -1,67 +1,30 @@
 @use 'variables' as *;
 
-.header {
-  height: $header-height;
-  flex-shrink: 0;
+// ── Floating back button (inside modules) ─────────────────────────────────────
+.back-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  background: $color-surface;
-  border-bottom: 1px solid $color-border;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: $font-mono;
+  color: $color-text-muted;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  border-radius: $radius-md;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color 0.12s, background 0.12s, border-color 0.12s;
 
-  &__left {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  &__back {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 500;
-    font-family: $font-mono;
-    color: $color-text-muted;
-    padding: 4px 8px;
-    border-radius: $radius-sm;
-    margin-right: 6px;
-    transition: color 0.12s, background 0.12s;
-
-    &:hover {
-      color: $color-text;
-      background: $color-bg;
-    }
-  }
-
-  &__brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__logo {
-    width: 28px;
-    height: 28px;
-    border-radius: $radius-md;
-    background: linear-gradient(135deg, $color-success, $color-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  &__title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #1a2535;
-    letter-spacing: -0.01em;
-  }
-
-  &__subtitle {
-    font-size: 11px;
-    color: $color-text-placeholder;
-    font-family: $font-mono;
+  &:hover {
+    color: $color-text;
+    background: rgba(30, 41, 59, 0.95);
+    border-color: $color-border;
   }
 }

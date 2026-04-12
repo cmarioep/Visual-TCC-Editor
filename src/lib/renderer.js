@@ -59,11 +59,11 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
   const fromY = sy => Math.pow(10, lyMin + (PH - (sy - PAD.top)) / PH * (lyMax - lyMin));
 
   // Background
-  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = '#fafbfc'; ctx.fillRect(PAD.left, PAD.top, PW, PH);
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#050e1d'; ctx.fillRect(PAD.left, PAD.top, PW, PH);
 
   // Minor grid
-  ctx.save(); ctx.strokeStyle = '#e8ecf0'; ctx.lineWidth = 0.75 * s;
+  ctx.save(); ctx.strokeStyle = '#1a2d3f'; ctx.lineWidth = 0.75 * s;
   for (const v of logTicks(xMin, xMax)) {
     const x = toX(v); ctx.beginPath(); ctx.moveTo(x, PAD.top); ctx.lineTo(x, H - PAD.bottom); ctx.stroke();
   }
@@ -73,7 +73,7 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
   ctx.restore();
 
   // Major grid (decade lines)
-  ctx.save(); ctx.strokeStyle = '#d0d7de'; ctx.lineWidth = 1 * s;
+  ctx.save(); ctx.strokeStyle = '#253447'; ctx.lineWidth = 1 * s;
   for (let e = Math.floor(lxMin); e <= Math.ceil(lxMax); e++) {
     const x = toX(Math.pow(10, e));
     if (x < PAD.left || x > W - PAD.right) continue;
@@ -85,13 +85,13 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
     ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(W - PAD.right, y); ctx.stroke();
   }
   ctx.restore();
-  ctx.save(); ctx.strokeStyle = '#b0bac6'; ctx.lineWidth = 1.5 * s;
+  ctx.save(); ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5 * s;
   ctx.strokeRect(PAD.left, PAD.top, PW, PH);
   ctx.restore();
 
   // Tick labels
   ctx.save();
-  ctx.fillStyle = '#7a8899';
+  ctx.fillStyle = '#64748b';
   ctx.font = `${10 * s}px 'DM Mono',monospace`;
   ctx.textAlign = 'center';
   for (const v of logTicks(xMin, xMax)) {
@@ -105,7 +105,7 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
     if (y < PAD.top + 2 || y > H - PAD.bottom - 2) continue;
     ctx.fillText(fmtN(v), PAD.left - 6 * s, y + 3.5 * s);
   }
-  ctx.fillStyle = '#4a5568';
+  ctx.fillStyle = '#94a3b8';
   ctx.font = `600 ${11 * s}px 'DM Sans',system-ui`;
   ctx.textAlign = 'center';
   ctx.fillText('Current (A)', PAD.left + PW / 2, H - 8 * s);
@@ -120,7 +120,7 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
   // Raw points + dashed line
   ctx.save();
   ctx.setLineDash([4 * s, 3 * s]);
-  ctx.strokeStyle = 'rgba(100,116,139,0.25)';
+  ctx.strokeStyle = 'rgba(148,163,184,0.2)';
   ctx.lineWidth = 1.2 * s;
   let rawFirst = true;
   for (const p of rawPts) {
@@ -133,7 +133,7 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
   for (const p of rawPts) {
     if (!isFinite(p.x) || !isFinite(p.y) || p.x <= 0 || p.y <= 0) continue;
     ctx.beginPath(); ctx.arc(toX(p.x), toY(p.y), 3.5 * s, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(100,116,139,0.4)'; ctx.fill();
+    ctx.fillStyle = 'rgba(148,163,184,0.35)'; ctx.fill();
   }
   ctx.restore();
 
@@ -173,7 +173,7 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
   if (output?.gapPts?.length) {
     output.gapPts.forEach(p => {
       ctx.beginPath(); ctx.arc(toX(p.x), toY(p.y), 5 * s, 0, Math.PI * 2);
-      ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5 * s; ctx.stroke();
+      ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5 * s; ctx.stroke();
     });
   }
 
@@ -183,11 +183,11 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
     if (p.x > 0 && p.y > 0) {
       ctx.beginPath();
       ctx.arc(toX(p.x), toY(p.y), isDraggingPt ? 8 * s : 6 * s, 0, Math.PI * 2);
-      ctx.fillStyle = isDraggingPt ? 'rgba(29,111,206,0.15)' : 'rgba(29,111,206,0.2)'; ctx.fill();
-      ctx.strokeStyle = '#1d6fce'; ctx.lineWidth = isDraggingPt ? 2 * s : 1.5 * s; ctx.stroke();
+      ctx.fillStyle = isDraggingPt ? 'rgba(26,107,189,0.15)' : 'rgba(26,107,189,0.2)'; ctx.fill();
+      ctx.strokeStyle = '#1a6bbd'; ctx.lineWidth = isDraggingPt ? 2 * s : 1.5 * s; ctx.stroke();
       if (isDraggingPt) {
         ctx.save();
-        ctx.strokeStyle = 'rgba(29,111,206,0.3)'; ctx.lineWidth = 0.75 * s; ctx.setLineDash([4 * s, 3 * s]);
+        ctx.strokeStyle = 'rgba(26,107,189,0.3)'; ctx.lineWidth = 0.75 * s; ctx.setLineDash([4 * s, 3 * s]);
         ctx.beginPath(); ctx.moveTo(toX(p.x), PAD.top); ctx.lineTo(toX(p.x), H - PAD.bottom); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(PAD.left, toY(p.y)); ctx.lineTo(W - PAD.right, toY(p.y)); ctx.stroke();
         ctx.restore();
@@ -200,8 +200,8 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
     const dx1 = toX(dragBox.xMin), dx2 = toX(dragBox.xMax);
     const dy1 = toY(dragBox.yMax), dy2 = toY(dragBox.yMin);
     ctx.save();
-    ctx.fillStyle = 'rgba(29,111,206,0.06)'; ctx.fillRect(dx1, dy1, dx2 - dx1, dy2 - dy1);
-    ctx.strokeStyle = 'rgba(29,111,206,0.7)'; ctx.lineWidth = 1.5 * s; ctx.setLineDash([5 * s, 3 * s]);
+    ctx.fillStyle = 'rgba(26,107,189,0.06)'; ctx.fillRect(dx1, dy1, dx2 - dx1, dy2 - dy1);
+    ctx.strokeStyle = 'rgba(26,107,189,0.7)'; ctx.lineWidth = 1.5 * s; ctx.setLineDash([5 * s, 3 * s]);
     ctx.strokeRect(dx1, dy1, dx2 - dx1, dy2 - dy1);
     ctx.restore();
   }
@@ -215,7 +215,7 @@ export function renderToCanvas(canvas, rawPts, selections, output, opts = {}) {
     selections.forEach((_, si) => {
       const color = SEG_COLORS[si % SEG_COLORS.length];
       ctx.fillStyle = color; ctx.fillRect(lx, ly + si * 20 * s, 20 * s, 3 * s);
-      ctx.fillStyle = '#4a5568'; ctx.fillText(`Segment ${si + 1}`, lx + 26 * s, ly + si * 20 * s + 4 * s);
+      ctx.fillStyle = '#94a3b8'; ctx.fillText(`Segment ${si + 1}`, lx + 26 * s, ly + si * 20 * s + 4 * s);
     });
     ctx.restore();
   }
