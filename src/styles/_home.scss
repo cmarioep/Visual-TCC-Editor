@@ -1,56 +1,128 @@
 @use 'variables' as *;
 
-// ── Home layout ───────────────────────────────────────────────────────────────
+// ── Home page ─────────────────────────────────────────────────────────────────
 .home {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
   background: $color-bg;
-  gap: 52px;
+  font-family: $font-sans;
+  overflow: hidden;
 }
 
-// ── Brand ─────────────────────────────────────────────────────────────────────
+// ── Navbar ────────────────────────────────────────────────────────────────────
+.home__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 32px;
+  border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
 .home__brand {
+  font-family: $font-mono;
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-primary;
+  letter-spacing: 0.12em;
+}
+
+.home__nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home__nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: 11px;
+  font-weight: 600;
+  color: $color-text-muted;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: $radius-sm;
+  transition: color 0.15s;
+
+  &:hover {
+    color: $color-text-secondary;
+  }
+}
+
+.home__icon-btn {
+  background: none;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  color: $color-text-muted;
+  width: 30px;
+  height: 30px;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+
+  &:hover {
+    color: $color-text-secondary;
+    border-color: $color-border-card;
+  }
+}
+
+// ── Main content ──────────────────────────────────────────────────────────────
+.home__main {
+  flex: 1;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  padding: 48px 32px 32px;
+  gap: 32px;
 }
 
-.home__wordmark {
+// ── Hero ──────────────────────────────────────────────────────────────────────
+.home__hero {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  gap: 6px;
 }
 
-.home__name {
-  font-family: $font-mono;
-  font-size: 30px;
-  font-weight: 500;
+.home__title {
+  font-family: $font-sans;
+  font-size: 36px;
+  font-weight: 700;
   color: $color-text;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin: 0;
 }
 
-.home__tagline {
-  font-size: 12px;
-  color: $color-text-placeholder;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.home__subtitle {
+  font-size: 11px;
   font-weight: 500;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+  margin: 0;
 }
 
-// ── Module cards ──────────────────────────────────────────────────────────────
-.home__modules {
-  display: flex;
-  gap: 18px;
-  align-items: stretch;
+// ── Module grid ───────────────────────────────────────────────────────────────
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
 }
 
+// ── Module card ───────────────────────────────────────────────────────────────
 .module-card {
-  width: 216px;
   background: $color-surface;
   border: 1px solid $color-border-card;
   border-top: 3px solid var(--module-color);
@@ -59,14 +131,21 @@
   display: flex;
   flex-direction: column;
   outline: none;
+  position: relative;
 
   &--available {
     cursor: pointer;
-    transition: box-shadow 0.15s, transform 0.1s;
+    transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
 
     &:hover {
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+      border-color: color-mix(in srgb, var(--module-color) 40%, $color-border-card);
       transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+
+      .module-card__btn {
+        color: var(--module-color);
+        border-color: var(--module-color);
+      }
     }
 
     &:focus-visible {
@@ -75,71 +154,141 @@
   }
 
   &--disabled {
-    opacity: 0.48;
+    opacity: 0.45;
+    cursor: default;
   }
 
-  // ── Curve preview area
-  &__curve {
-    height: 108px;
-    background: $color-surface-muted;
-    border-bottom: 1px solid $color-border-muted;
+  // ── Header row
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 16px 0;
+    overflow: hidden;
+  }
+
+  &__header-left {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 8px 12px;
+    gap: 8px;
+    flex-shrink: 0;
   }
 
-  // ── Text info
-  &__info {
-    padding: 12px 14px 10px;
+  &__icon {
+    color: var(--module-color);
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
+    align-items: center;
+    flex-shrink: 0;
   }
 
   &__name {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     color: $color-text;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
   }
 
-  &__desc {
-    font-size: 11px;
-    color: $color-text-muted;
-    font-family: $font-mono;
-    line-height: 1.5;
-  }
-
-  // ── Footer action / badge
-  &__footer {
-    padding: 10px 14px 12px;
-    border-top: 1px solid $color-border-muted;
-  }
-
-  &__action {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
+  // Corner decorative icon
+  &__corner-icon {
     color: var(--module-color);
-    user-select: none;
+    opacity: 0.1;
+    flex-shrink: 0;
+    margin-top: -4px;
   }
 
-  &__badge {
-    font-size: 10px;
-    font-weight: 500;
-    font-family: $font-mono;
-    color: $color-text-placeholder;
-    letter-spacing: 0.06em;
+  // ── Description
+  &__desc {
+    font-size: 12px;
+    color: $color-text-secondary;
+    line-height: 1.55;
+    padding: 10px 16px 0;
+    margin: 0;
+  }
+
+  // ── Curve preview
+  &__preview {
+    height: 120px;
+    background: $color-surface-muted;
+    border-top: 1px solid rgba($color-border, 0.5);
+    border-bottom: 1px solid rgba($color-border, 0.5);
+    margin-top: 14px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ── Footer
+  &__footer {
+    padding: 12px 16px;
+  }
+
+  &__btn {
+    display: block;
+    width: 100%;
+    padding: 7px 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: $font-sans;
+    letter-spacing: 0.08em;
+    color: $color-text-muted;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    transition: color 0.15s, border-color 0.15s;
+    user-select: none;
   }
 }
 
-// ── Version ───────────────────────────────────────────────────────────────────
-.home__version {
-  font-size: 11px;
+// ── Live log bar ──────────────────────────────────────────────────────────────
+.home__log {
+  flex-shrink: 0;
+  height: 30px;
+  background: $color-surface-muted;
+  border-top: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  overflow: hidden;
+}
+
+.home__log-label {
   font-family: $font-mono;
-  color: $color-text-placeholder;
+  font-size: 10px;
+  font-weight: 500;
+  color: $color-success;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.home__log-sep {
+  color: $color-border;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.home__log-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.home__log-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: $font-mono;
+  font-size: 10px;
+  color: $color-text-muted;
+  animation: log-scroll 28s linear infinite;
+}
+
+@keyframes log-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
