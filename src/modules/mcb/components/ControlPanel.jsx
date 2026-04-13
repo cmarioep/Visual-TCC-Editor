@@ -20,7 +20,7 @@ function SliderBlock({ label, hint, id, min, max, value, step, fmt, onChange }) 
 export default function ControlPanel({ state, update, reset, setCurveType, onChangeIn }) {
   return (
     <div className="control-panel">
-      <div className="section-title">— Ajustes de la Curva —</div>
+      <div className="section-title"><span>— Ajustes de la Curva —</span></div>
 
       <div className="in-box">
         <label>Corriente nominal</label>

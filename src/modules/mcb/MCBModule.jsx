@@ -73,6 +73,23 @@ export default function MCBModule() {
       <BackButton onClick={() => navigate('/')} />
       <div className="mcb-module__body">
 
+        <div className="panel-col">
+          <ControlPanel
+            state={state}
+            update={update}
+            reset={reset}
+            setCurveType={setCurveType}
+            onChangeIn={v => setState(prev => {
+              const next = structuredClone(prev)
+              next.In = v
+              return next
+            })}
+          />
+          <AnchorCards In={state.In} anc={anc} sol={sol} thermalT={thermalT} />
+          <ParamsTable sol={sol} anc={anc} thermalT={thermalT} />
+          <NormCheck sol={sol} anc={anc} thermalT={thermalT} curveLabel={cp.label} />
+        </div>
+
         <div className="chart-col">
           <div className="chart-header">
             <div className="subtitle">MCB · IEC 60898-1 · {cp.label}</div>
@@ -96,23 +113,6 @@ export default function MCBModule() {
             </div>
           </div>
           <TCCCanvas state={state} sol={sol} anc={anc} />
-        </div>
-
-        <div className="panel-col">
-          <ControlPanel
-            state={state}
-            update={update}
-            reset={reset}
-            setCurveType={setCurveType}
-            onChangeIn={v => setState(prev => {
-              const next = structuredClone(prev)
-              next.In = v
-              return next
-            })}
-          />
-          <AnchorCards In={state.In} anc={anc} sol={sol} thermalT={thermalT} />
-          <ParamsTable sol={sol} anc={anc} thermalT={thermalT} />
-          <NormCheck sol={sol} anc={anc} thermalT={thermalT} curveLabel={cp.label} />
         </div>
 
       </div>
