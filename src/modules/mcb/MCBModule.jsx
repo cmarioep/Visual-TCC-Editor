@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { BackButton } from '../../components/BackButton'
 import TCCCanvas from './components/TCCCanvas'
 import ControlPanel from './components/ControlPanel'
@@ -31,7 +32,8 @@ const SHOW_LABELS = {
   zones: 'Zonas',
 }
 
-export default function MCBModule({ onHome }) {
+export default function MCBModule() {
+  const navigate = useNavigate()
   const [state, setState] = useState(() => structuredClone(DEFAULT_STATE))
 
   const update = useCallback((path, value) => {
@@ -68,7 +70,7 @@ export default function MCBModule({ onHome }) {
 
   return (
     <div className="mcb-module">
-      <BackButton onClick={onHome} />
+      <BackButton onClick={() => navigate('/')} />
       <div className="mcb-module__body">
 
         <div className="chart-col">

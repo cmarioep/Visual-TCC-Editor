@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 // ── Module config ─────────────────────────────────────────────────────────────
 const MODULES = [
   {
@@ -279,7 +281,8 @@ function BellIcon() {
 }
 
 // ── Home ──────────────────────────────────────────────────────────────────────
-export default function Home({ onSelectModule }) {
+export default function Home() {
+  const navigate = useNavigate();
   const logText = LOG_ENTRIES.join('  ·  ');
 
   return (
@@ -313,10 +316,10 @@ export default function Home({ onSelectModule }) {
                 key={mod.id}
                 className={`module-card ${mod.available ? 'module-card--available' : 'module-card--disabled'}`}
                 style={{ '--module-color': mod.color }}
-                onClick={mod.available ? () => onSelectModule(mod.id) : undefined}
+                onClick={mod.available ? () => navigate(`/${mod.id}`) : undefined}
                 role={mod.available ? 'button' : undefined}
                 tabIndex={mod.available ? 0 : undefined}
-                onKeyDown={mod.available ? (e) => e.key === 'Enter' && onSelectModule(mod.id) : undefined}
+                onKeyDown={mod.available ? (e) => e.key === 'Enter' && navigate(`/${mod.id}`) : undefined}
               >
                 <div className="module-card__header">
                   <div className="module-card__header-left">

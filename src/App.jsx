@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { SAMPLE } from './lib/constants';
 import { parseInput } from './lib/parser';
@@ -13,19 +14,24 @@ import { BackButton } from './components/BackButton';
 import { Panel } from './components/Panel/Panel';
 import { Chart } from './components/Chart/Chart';
 
-export default function App({ onHome }) {
+export default function App() {
+  const navigate = useNavigate();
   const [inputText, setInputText]     = useState(SAMPLE);
   const [parseError, setParseError]   = useState(null);
-  const [rawPts, setRawPts]           = useState(null);
+  const [rawPts, setRawPts]           = useState(() => {
+    const res = parseInput(SAMPLE);
+    if (!res.ok) return null;
+    return res.data.sort((a, b) => a.x - b.x).map((p, i) => ({ ...p, _id: i }));
+  });
   const [selections, setSelections]   = useState([]);
   const [curveName, setCurveName]     = useState('curve_mm');
   const [nextId, setNextId]           = useState(1);
 
   // Refs for synchronous reads inside interaction handlers (avoids nested setters)
   const selectionsRef = useRef(selections);
-  selectionsRef.current = selections;
   const rawPtsRef = useRef(rawPts);
-  rawPtsRef.current = rawPts;
+  useLayoutEffect(() => { selectionsRef.current = selections; }, [selections]);
+  useLayoutEffect(() => { rawPtsRef.current = rawPts; }, [rawPts]);
 
   const history  = useHistory({ selections: [], rawPts: null });
   const viewport = useViewport();
@@ -63,9 +69,6 @@ export default function App({ onHome }) {
       setParseError(res.error);
     }
   }, [inputText, viewport, history]);
-
-  // Parse on mount with sample data
-  useEffect(() => { handleParse(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Clear ─────────────────────────────────────────────────────────────────────
   const handleClear = useCallback(() => {
@@ -133,7 +136,7 @@ export default function App({ onHome }) {
 
   return (
     <div className="app">
-      {onHome && <BackButton onClick={onHome} />}
+      <BackButton onClick={() => navigate('/')} />
       <div className="app__body">
         <Panel
           // input
