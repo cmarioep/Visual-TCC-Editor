@@ -347,7 +347,7 @@ export default function Home() {
       </main>
 
       {/* ── Live log ──────────────────────────────────────────────────────── */}
-      <footer className="home__log">
+      {/* <footer className="home__log">
         <span className="home__log-label">LIVE LOG</span>
         <span className="home__log-sep">|</span>
         <div className="home__log-track">
@@ -355,7 +355,7 @@ export default function Home() {
             {logText}&nbsp;&nbsp;&nbsp;&nbsp;{logText}
           </span>
         </div>
-      </footer>
+      </footer> */}
 
     </div>
   );
