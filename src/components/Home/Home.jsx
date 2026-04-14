@@ -49,16 +49,16 @@ const LOG_ENTRIES = [
 function PreviewGrid() {
   return (
     <>
-      <line x1="80"  y1="0"  x2="80"  y2="88" stroke="#253447" strokeWidth="0.7" />
-      <line x1="0"   y1="44" x2="160" y2="44" stroke="#253447" strokeWidth="0.7" />
-      <line x1="24"  y1="0"  x2="24"  y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="56"  y1="0"  x2="56"  y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="104" y1="0"  x2="104" y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="136" y1="0"  x2="136" y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="0"   y1="13" x2="160" y2="13" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="0"   y1="31" x2="160" y2="31" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="0"   y1="57" x2="160" y2="57" stroke="#1e2d3d" strokeWidth="0.5" />
-      <line x1="0"   y1="75" x2="160" y2="75" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="80" y1="0" x2="80" y2="88" stroke="#253447" strokeWidth="0.7" />
+      <line x1="0" y1="44" x2="160" y2="44" stroke="#253447" strokeWidth="0.7" />
+      <line x1="24" y1="0" x2="24" y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="56" y1="0" x2="56" y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="104" y1="0" x2="104" y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="136" y1="0" x2="136" y2="88" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="0" y1="13" x2="160" y2="13" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="0" y1="31" x2="160" y2="31" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="0" y1="57" x2="160" y2="57" stroke="#1e2d3d" strokeWidth="0.5" />
+      <line x1="0" y1="75" x2="160" y2="75" stroke="#1e2d3d" strokeWidth="0.5" />
     </>
   );
 }
@@ -158,18 +158,18 @@ function RelayPreview() {
 
 const CURVE_PREVIEWS = {
   manual: ManualPreview,
-  mcb:    MCBPreview,
-  mccb:   MCCBPreview,
-  relay:  RelayPreview,
+  mcb: MCBPreview,
+  mccb: MCCBPreview,
+  relay: RelayPreview,
 };
 
 // ── Card header icons (16px) ──────────────────────────────────────────────────
 function IconManual() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M1 13 C3 9, 6 5, 9 4 C11 3, 13 3, 13 1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" fill="none"/>
-      <circle cx="3.5" cy="10.5" r="1.2" fill="currentColor" opacity="0.7"/>
-      <circle cx="9" cy="4.5" r="1.2" fill="currentColor" opacity="0.7"/>
+      <path d="M1 13 C3 9, 6 5, 9 4 C11 3, 13 3, 13 1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+      <circle cx="3.5" cy="10.5" r="1.2" fill="currentColor" opacity="0.7" />
+      <circle cx="9" cy="4.5" r="1.2" fill="currentColor" opacity="0.7" />
     </svg>
   );
 }
@@ -177,10 +177,10 @@ function IconManual() {
 function IconMCB() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <line x1="2" y1="4" x2="12" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <line x1="2" y1="10" x2="8"  y2="10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <circle cx="11" cy="10" r="1.5" fill="currentColor"/>
+      <line x1="2" y1="4" x2="12" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="2" y1="10" x2="8" y2="10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="11" cy="10" r="1.5" fill="currentColor" />
     </svg>
   );
 }
@@ -188,12 +188,12 @@ function IconMCB() {
 function IconMCCB() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <rect x="1"  y="7" width="3" height="6" rx="1" fill="currentColor"/>
-      <rect x="5"  y="5" width="3" height="8" rx="1" fill="currentColor"/>
-      <rect x="9" y="3" width="3" height="10" rx="1" fill="currentColor" opacity="0.6"/>
-      <circle cx="2.5" cy="5" r="1.5" fill="currentColor"/>
-      <circle cx="6.5" cy="3" r="1.5" fill="currentColor"/>
-      <circle cx="10.5" cy="1.5" r="1.5" fill="currentColor" opacity="0.6"/>
+      <rect x="1" y="7" width="3" height="6" rx="1" fill="currentColor" />
+      <rect x="5" y="5" width="3" height="8" rx="1" fill="currentColor" />
+      <rect x="9" y="3" width="3" height="10" rx="1" fill="currentColor" opacity="0.6" />
+      <circle cx="2.5" cy="5" r="1.5" fill="currentColor" />
+      <circle cx="6.5" cy="3" r="1.5" fill="currentColor" />
+      <circle cx="10.5" cy="1.5" r="1.5" fill="currentColor" opacity="0.6" />
     </svg>
   );
 }
@@ -201,11 +201,11 @@ function IconMCCB() {
 function IconRelay() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <line x1="7" y1="13" x2="7" y2="8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <line x1="7" y1="8" x2="3" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <line x1="7" y1="8" x2="11" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <line x1="7" y1="8" x2="7"  y2="3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <circle cx="7" cy="2" r="1.4" fill="currentColor"/>
+      <line x1="7" y1="13" x2="7" y2="8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="7" y1="8" x2="3" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="7" y1="8" x2="11" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="7" y1="8" x2="7" y2="3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="7" cy="2" r="1.4" fill="currentColor" />
     </svg>
   );
 }
@@ -214,9 +214,9 @@ function IconRelay() {
 function CornerManual() {
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" className="module-card__corner-icon">
-      <path d="M4 52 C12 36, 24 20, 36 14 C44 10, 52 10, 52 4" stroke="currentColor" strokeWidth="4" strokeLinecap="round" fill="none"/>
-      <circle cx="14" cy="42" r="5" fill="currentColor" opacity="0.6"/>
-      <circle cx="36" cy="16" r="5" fill="currentColor" opacity="0.6"/>
+      <path d="M4 52 C12 36, 24 20, 36 14 C44 10, 52 10, 52 4" stroke="currentColor" strokeWidth="4" strokeLinecap="round" fill="none" />
+      <circle cx="14" cy="42" r="5" fill="currentColor" opacity="0.6" />
+      <circle cx="36" cy="16" r="5" fill="currentColor" opacity="0.6" />
     </svg>
   );
 }
@@ -224,10 +224,10 @@ function CornerManual() {
 function CornerMCB() {
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" className="module-card__corner-icon">
-      <line x1="8"  y1="16" x2="48" y2="16" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <line x1="8"  y1="28" x2="48" y2="28" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <line x1="8"  y1="40" x2="30" y2="40" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <circle cx="43" cy="40" r="6" fill="currentColor"/>
+      <line x1="8" y1="16" x2="48" y2="16" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <line x1="8" y1="28" x2="48" y2="28" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <line x1="8" y1="40" x2="30" y2="40" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="43" cy="40" r="6" fill="currentColor" />
     </svg>
   );
 }
@@ -235,12 +235,12 @@ function CornerMCB() {
 function CornerMCCB() {
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" className="module-card__corner-icon">
-      <rect x="2"  y="28" width="12" height="24" rx="3" fill="currentColor"/>
-      <rect x="20" y="20" width="12" height="32" rx="3" fill="currentColor"/>
-      <rect x="38" y="12" width="12" height="40" rx="3" fill="currentColor" opacity="0.6"/>
-      <circle cx="8"  cy="20" r="6" fill="currentColor"/>
-      <circle cx="26" cy="12" r="6" fill="currentColor"/>
-      <circle cx="44" cy="5"  r="6" fill="currentColor" opacity="0.6"/>
+      <rect x="2" y="28" width="12" height="24" rx="3" fill="currentColor" />
+      <rect x="20" y="20" width="12" height="32" rx="3" fill="currentColor" />
+      <rect x="38" y="12" width="12" height="40" rx="3" fill="currentColor" opacity="0.6" />
+      <circle cx="8" cy="20" r="6" fill="currentColor" />
+      <circle cx="26" cy="12" r="6" fill="currentColor" />
+      <circle cx="44" cy="5" r="6" fill="currentColor" opacity="0.6" />
     </svg>
   );
 }
@@ -248,25 +248,25 @@ function CornerMCCB() {
 function CornerRelay() {
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" className="module-card__corner-icon">
-      <line x1="28" y1="52" x2="28" y2="34" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <line x1="28" y1="34" x2="10" y2="16" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <line x1="28" y1="34" x2="46" y2="16" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <line x1="28" y1="34" x2="28" y2="10" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-      <circle cx="28" cy="6" r="6" fill="currentColor"/>
+      <line x1="28" y1="52" x2="28" y2="34" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <line x1="28" y1="34" x2="10" y2="16" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <line x1="28" y1="34" x2="46" y2="16" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <line x1="28" y1="34" x2="28" y2="10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="28" cy="6" r="6" fill="currentColor" />
     </svg>
   );
 }
 
-const HEADER_ICONS  = { manual: IconManual,  mcb: IconMCB,    mccb: IconMCCB,  relay: IconRelay  };
-const CORNER_ICONS  = { manual: CornerManual, mcb: CornerMCB, mccb: CornerMCCB, relay: CornerRelay };
+const HEADER_ICONS = { manual: IconManual, mcb: IconMCB, mccb: IconMCCB, relay: IconRelay };
+const CORNER_ICONS = { manual: CornerManual, mcb: CornerMCB, mccb: CornerMCCB, relay: CornerRelay };
 
 // ── Nav icons ─────────────────────────────────────────────────────────────────
 function HelpIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.4"/>
-      <path d="M5.5 6C5.5 4.6 6.6 3.5 8 3.5 9.4 3.5 10.5 4.6 10.5 6 10.5 7.4 8 8.5 8 9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      <circle cx="8" cy="11.5" r="0.8" fill="currentColor"/>
+      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M5.5 6C5.5 4.6 6.6 3.5 8 3.5 9.4 3.5 10.5 4.6 10.5 6 10.5 7.4 8 8.5 8 9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="8" cy="11.5" r="0.8" fill="currentColor" />
     </svg>
   );
 }
@@ -274,8 +274,8 @@ function HelpIcon() {
 function BellIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M8 2a5 5 0 0 0-5 5v3l-1 1.5h12L13 10V7a5 5 0 0 0-5-5z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
-      <path d="M6.5 13.5a1.5 1.5 0 0 0 3 0" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      <path d="M8 2a5 5 0 0 0-5 5v3l-1 1.5h12L13 10V7a5 5 0 0 0-5-5z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+      <path d="M6.5 13.5a1.5 1.5 0 0 0 3 0" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }
@@ -283,14 +283,12 @@ function BellIcon() {
 // ── Home ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   const navigate = useNavigate();
-  const logText = LOG_ENTRIES.join('  ·  ');
 
   return (
     <div className="home">
 
       {/* ── Navbar ────────────────────────────────────────────────────────── */}
       <nav className="home__nav">
-        <span className="home__brand">CURVELAB TCC</span>
         <div className="home__nav-actions">
           <button className="home__nav-link">DOCUMENTATION</button>
           <button className="home__nav-link">SETTINGS</button>
@@ -308,8 +306,8 @@ export default function Home() {
 
         <div className="home__grid">
           {MODULES.map((mod) => {
-            const HeaderIcon  = HEADER_ICONS[mod.id];
-            const CornerIcon  = CORNER_ICONS[mod.id];
+            const HeaderIcon = HEADER_ICONS[mod.id];
+            const CornerIcon = CORNER_ICONS[mod.id];
             const CurvePreview = CURVE_PREVIEWS[mod.id];
             return (
               <div
@@ -345,17 +343,6 @@ export default function Home() {
           })}
         </div>
       </main>
-
-      {/* ── Live log ──────────────────────────────────────────────────────── */}
-      {/* <footer className="home__log">
-        <span className="home__log-label">LIVE LOG</span>
-        <span className="home__log-sep">|</span>
-        <div className="home__log-track">
-          <span className="home__log-scroll">
-            {logText}&nbsp;&nbsp;&nbsp;&nbsp;{logText}
-          </span>
-        </div>
-      </footer> */}
 
     </div>
   );

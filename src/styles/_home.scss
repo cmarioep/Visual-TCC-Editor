@@ -15,7 +15,7 @@
 .home__nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 64px;
   padding: 0 32px;
   border-bottom: 1px solid $color-border;
@@ -243,54 +243,5 @@
   }
 }
 
-// ── Live log bar ──────────────────────────────────────────────────────────────
-.home__log {
-  flex-shrink: 0;
-  height: 30px;
-  background: $color-surface-muted;
-  border-top: 1px solid $color-border;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px;
-  overflow: hidden;
-}
 
-.home__log-label {
-  font-family: $font-mono;
-  font-size: 10px;
-  font-weight: 500;
-  color: $color-success;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
 
-.home__log-sep {
-  color: $color-border;
-  font-size: 12px;
-  flex-shrink: 0;
-}
-
-.home__log-track {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.home__log-scroll {
-  display: inline-block;
-  white-space: nowrap;
-  font-family: $font-mono;
-  font-size: 10px;
-  color: $color-text-muted;
-  animation: log-scroll 28s linear infinite;
-}
-
-@keyframes log-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
