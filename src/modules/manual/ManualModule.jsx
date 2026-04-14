@@ -1,20 +1,20 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { SAMPLE } from './lib/constants';
-import { parseInput } from './lib/parser';
-import { buildOutput } from './lib/buildOutput';
+import { SAMPLE } from './utils/constants';
+import { parseInput } from './utils/parser';
+import { buildOutput } from './utils/buildOutput';
 
 import { useHistory } from './hooks/useHistory';
 import { useViewport } from './hooks/useViewport';
 import { useExport } from './hooks/useExport';
 import { useCanvasInteraction } from './hooks/useCanvasInteraction';
 
-import { BackButton } from './components/BackButton';
+import { BackButton } from '../../components/BackButton';
 import { Panel } from './components/Panel/Panel';
 import { Chart } from './components/Chart/Chart';
 
-export default function App() {
+export default function ManualModule() {
   const navigate = useNavigate();
   const [inputText, setInputText]     = useState(SAMPLE);
   const [parseError, setParseError]   = useState(null);

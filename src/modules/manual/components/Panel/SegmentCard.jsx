@@ -1,5 +1,5 @@
-import { fmtN } from '../../lib/renderer';
-import { SEG_COLORS } from '../../lib/constants';
+import { fmtN } from '../../utils/renderer';
+import { SEG_COLORS } from '../../utils/constants';
 
 export function SegmentCard({ sel, index, pointCount, onRemove, onLambdaChange }) {
   const color = SEG_COLORS[index % SEG_COLORS.length];

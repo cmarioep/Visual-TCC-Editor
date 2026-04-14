@@ -1,4 +1,4 @@
-import { SEG_COLORS } from '../../lib/constants';
+import { SEG_COLORS } from '../../utils/constants';
 
 export function Toolbar({ selections, nGap, canUndo, hasZoom, onUndo, onResetZoom }) {
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react';
-import { renderToCanvas } from '../../lib/renderer';
+import { renderToCanvas } from '../../utils/renderer';
 import { Toolbar } from './Toolbar';
 import { Tooltip } from './Tooltip';
 

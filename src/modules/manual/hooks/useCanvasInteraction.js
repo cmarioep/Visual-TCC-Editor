@@ -75,7 +75,7 @@ export function useCanvasInteraction({
     return bestId !== null && bestDist < HIT ? { id: bestId, dist: bestDist } : null;
   }, [rawPts, getScreenCoords]);
 
-  // ── cancelAll: called from App.jsx on Escape ──────────────────────────────────
+  // ── cancelAll: called from ManualModule.jsx on Escape ────────────────────────
 
   const cancelAll = useCallback((restoredRawPts) => {
     setDragging(null);
