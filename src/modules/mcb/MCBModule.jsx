@@ -8,6 +8,7 @@ import ParamsTable from './components/ParamsTable'
 import NormCheck from './components/NormCheck'
 import { solveSystem, thermalT } from './utils/solver'
 import { CURVE_PARAMS } from './utils/curveParams'
+import ExportSection from './components/ExportSection'
 
 // Anclas térmicas — fijas para todos los tipos de curva
 const ANC_THERMAL = {
@@ -88,6 +89,7 @@ export default function MCBModule() {
           <AnchorCards In={state.In} anc={anc} sol={sol} thermalT={thermalT} />
           <ParamsTable sol={sol} anc={anc} thermalT={thermalT} />
           <NormCheck sol={sol} anc={anc} thermalT={thermalT} curveLabel={cp.label} />
+          <ExportSection state={state} sol={sol} anc={anc} />
         </div>
 
         <div className="chart-col">
