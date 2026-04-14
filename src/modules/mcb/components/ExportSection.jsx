@@ -5,9 +5,8 @@ export default function ExportSection({ state, sol, anc }) {
   const [copied, setCopied] = useState(false)
 
   const handleCopyJSON = useCallback(() => {
-    const data = buildExportJSON(state, sol, anc)
-    const json = JSON.stringify(data, null, 2)
-    navigator.clipboard.writeText(json).then(() => {
+    const text = buildExportJSON(state, sol, anc)
+    navigator.clipboard.writeText(text).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2200)
     })
@@ -15,7 +14,6 @@ export default function ExportSection({ state, sol, anc }) {
 
   return (
     <div className="export-section">
-      <div className="section-label">Exportar curva</div>
       <div className="export-buttons">
         <button
           className={`export-btn export-btn--primary${copied ? ' export-btn--success' : ''}`}

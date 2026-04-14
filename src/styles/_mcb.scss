@@ -33,7 +33,7 @@
   min-width: 260px;
   flex-shrink: 0;
   min-height: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 1.5rem;
   padding-top: 0;
   border-right: 1px solid #334155;
@@ -418,7 +418,8 @@
 
 .conf-status {
   font-size: 12px;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 8px 12px;
   border-radius: var(--radius);
   background: var(--bg2);
@@ -435,15 +436,12 @@
 
 // ── Export section ────────────────────────────────────────────────────────────
 .export-section {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
+  margin-top: 0;
 }
 
 .export-buttons {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
 }
 
 .export-btn {
