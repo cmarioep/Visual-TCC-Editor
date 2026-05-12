@@ -108,7 +108,7 @@ export function useCanvasDraw(state, sol, anc) {
         ctx.lineTo(xTransition, py(tPiso))
         ctx.lineTo(xRight, py(tPiso))
       } else {
-        ctx.lineTo(xRight, py(T_INST))
+        ctx.lineTo(xRight, py(0.002))
       }
     }
 
